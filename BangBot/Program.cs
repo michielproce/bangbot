@@ -6,6 +6,10 @@ namespace BangBot
 {
     class Program
     {
+        
+        public static readonly Random Random = new Random();
+        
+        
         static void Main(string[] args)
         {
             CommandProcessor commandProcessor = new CommandProcessor();

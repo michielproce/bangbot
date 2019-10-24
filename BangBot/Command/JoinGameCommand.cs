@@ -11,7 +11,7 @@ namespace BangBot.Command
         {
             if (BangGame.current?.GameState == GameState.Lobby)
             {
-                if (BangGame.current.Participants.Count >= BangGame.MaxPlayers)
+                if (BangGame.current.Users.Count >= BangGame.MaxPlayers)
                 {
                     Out.main.WriteLines($"{user} cannot join. Game is full");
                     
@@ -23,7 +23,7 @@ namespace BangBot.Command
                 }
 
                 Out.main.WriteLines(
-                    $"Current participants: {(string.Join(", ", BangGame.current.Participants))}",
+                    $"Current participants: {(string.Join(", ", BangGame.current.Users))}",
                     $"{BangGame.current.StartUser} can start the game by typing 'go'"
                 );
             }

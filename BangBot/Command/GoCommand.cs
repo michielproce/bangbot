@@ -11,16 +11,14 @@ namespace BangBot.Command
         {
             if (BangGame.current?.StartUser == user)
             {
-                if (BangGame.current.Participants.Count < BangGame.MinPlayers)
+                if (BangGame.current.Users.Count < BangGame.MinPlayers)
                 {
                     Out.main.WriteLines($"Cannot proceed, {BangGame.MinPlayers} players required");
                     return;
                 }
                 
-                
+                Out.main.WriteLines($"Starting game with {(string.Join(", ", BangGame.current.Users))}");
                 BangGame.current.Go();
-                
-                Out.main.WriteLines($"Starting game with {(string.Join(", ", BangGame.current.Participants))}");
             }
         }
     }
