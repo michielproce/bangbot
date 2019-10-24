@@ -4,19 +4,19 @@ namespace BangBot.Output
 {
     public class ConsoleOutput : IOutput
     {
-        public void WriteLines(params string[] ss)
+        public void Write(params string[] messages)
         {
-            foreach (string s in ss)
+            foreach (string message in messages)
             {
-                Console.WriteLine(s);    
+                Console.WriteLine(message);    
             }
         }
 
-        public void WritePrivateLines(string user, params string[] ss)
+        public void WritePrivate(string user, params string[] messages)
         {
-            foreach (string s in ss)
+            foreach (string message in messages)
             {
-                Console.WriteLine($"PRIVATE TO {user}: {s}");    
+                Console.WriteLine($"PRIVATE TO {user}: {message}");    
             }
         }
     }

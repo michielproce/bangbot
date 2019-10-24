@@ -21,7 +21,7 @@ namespace BangBot
                 Out.main = new ConsoleOutput();
 
                 
-                Out.main.WriteLines(
+                Out.main.Write(
                    "Console emulation mode",
                    "First word is person id, rest is command",
                    "For example, to start a game:",
@@ -29,7 +29,7 @@ namespace BangBot
                 );
                 
                 
-                Out.main.WriteLines("");
+                Out.main.Write("");
                 
                 CommandProcessor processor = commandProcessor;
                 
@@ -67,7 +67,7 @@ namespace BangBot
 
         private static void Simulate(CommandProcessor processor, string user, string userCommand)
         {
-            Out.main.WriteLines($"{user} {userCommand}");
+            Out.main.Write($"{user} {userCommand}");
             processor.Process(user, userCommand);
         }
     }

@@ -6,7 +6,7 @@ namespace BangBot.Command
 {
     public class StartGameCommand : ICommand
     {
-        private const int Timeout = 2_000;
+        private const int Timeout = 120_000;
 
         private Timer _timer;
 
@@ -18,7 +18,7 @@ namespace BangBot.Command
             if (BangGame.current == null)
             {
                 BangGame.current = new BangGame(user);
-                Out.main.WriteLines(
+                Out.main.Write(
                     $"{user} is starting a new game",
                     "To join type 'join'"
                 );
@@ -31,7 +31,7 @@ namespace BangBot.Command
             }
             else
             {
-                Out.main.WriteLines("Game already in progress");
+                Out.main.Write("Game already in progress");
             }
             
         }
@@ -42,7 +42,7 @@ namespace BangBot.Command
             
             if (BangGame.current.GameState == GameState.Lobby)
             {
-                Out.main.WriteLines("Timed out. Destroying game");
+                Out.main.Write("Timed out. Destroying game");
                 BangGame.current = null;    
             }
         }

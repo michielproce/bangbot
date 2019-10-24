@@ -47,7 +47,7 @@ namespace BangBot.Game
                 string user = Users[i];
                 Role role = roles[i];
                 Players.Add(new Player(user, role));
-                Out.main.WritePrivateLines(user, $"You are: {role}");
+                Out.main.WritePrivate(user, $"You are: {role}");
             }
         }
 
