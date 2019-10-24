@@ -14,7 +14,7 @@ namespace BangBot.Game
         private int _round;
 
         public string StartUser { get; }
-        public GameState GameState { get; private set; }
+        public GameState State { get; private set; }
         public List<string> Users { get; }
 
 
@@ -24,7 +24,7 @@ namespace BangBot.Game
 
         public BangGame(string startUser)
         {
-            GameState = GameState.Lobby;
+            State = GameState.Lobby;
             
             StartUser = startUser;
             
@@ -39,7 +39,7 @@ namespace BangBot.Game
 
         public void Go()
         {
-            GameState = GameState.Active;
+            State = GameState.Active;
             List<Role> roles = CreateRoles();
             
             Players = new Player[Users.Count];

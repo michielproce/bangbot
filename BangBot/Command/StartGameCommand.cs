@@ -40,7 +40,7 @@ namespace BangBot.Command
         {
             _timer.Enabled = false;
             
-            if (BangGame.current.GameState == GameState.Lobby)
+            if (BangGame.current.State == GameState.Lobby)
             {
                 Out.main.Write("Timed out. Destroying game");
                 BangGame.current = null;    

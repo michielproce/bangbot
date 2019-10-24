@@ -9,7 +9,7 @@ namespace BangBot.Command
         
         public void Execute(string user, string parameters)
         {
-            if (BangGame.current?.GameState == GameState.Lobby)
+            if (BangGame.current?.State == GameState.Lobby)
             {
                 if (BangGame.current.Users.Count >= BangGame.MaxPlayers)
                 {

@@ -11,7 +11,8 @@ namespace BangBot.Command
                 new StartGameCommand(),
                 new JoinGameCommand(), 
                 new GoCommand(),
-                new RollCommand() 
+                new RollCommand(),
+                new ShowCommand()
             };
         }
 
@@ -20,8 +21,7 @@ namespace BangBot.Command
             userCommand = userCommand.Trim().ToLower();
             
             int firstSpace = userCommand.IndexOf(" ");
-
-
+            
             string trigger;
             string parameters = null;
             
@@ -34,13 +34,6 @@ namespace BangBot.Command
                 trigger = userCommand.Substring(0, firstSpace);
                 parameters = userCommand.Substring(firstSpace + 1);
             }
-            
-//            if (firstSpace < 0)
-//            {
-//                firstSpace = userCommand.Length;
-//            }
-////            string parameters = userCommand.Substring(firstSpace + 1);
-//
 
             foreach (ICommand command in _commands)
             {
