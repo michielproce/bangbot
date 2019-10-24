@@ -1,15 +1,44 @@
+using BangBot.Output;
+
 namespace BangBot.Game
 {
     public class Player
     {
-        public string user;
+        public string User { get; }
+        
         public Role Role { get; }
+        public bool RoleRevealed { get; private set; }
+
+        public int Health { get; private set; }
+        public int Arrows { get; private set; }
+        
+        public Turn Turn { get; private set; }
 
         public Player(string user, Role role)
         {
-            this.user = user;
+            User = user;
             Role = role;
+
+            Health = 10;
+            Arrows = 0;
+
+            if (role == Role.Sheriff)
+            {
+                RoleRevealed = true;
+            }
+        }
+
+        public void StartTurn()
+        {
+            Turn = new Turn(); 
+            Out.main.Write($"{User}'s turn. Available commands: 'roll'");
+            
+        }
+
+        public void RemoveArrow()
+        {
+            Out.main.Write($"Arrow for {User}");
+            Arrows++;
         }
     }
-    
 }

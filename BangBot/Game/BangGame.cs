@@ -18,7 +18,9 @@ namespace BangBot.Game
         public List<string> Users { get; }
 
 
-        public List<Player> Players { get; private set; }
+        public Player[] Players { get; private set; }
+        public int CurrentPlayerIndex { get; private set; }
+        public Player CurrentPlayer => Players[CurrentPlayerIndex];
 
         public BangGame(string startUser)
         {
@@ -40,16 +42,24 @@ namespace BangBot.Game
             GameState = GameState.Active;
             List<Role> roles = CreateRoles();
             
-            Players = new List<Player>(Users.Count);
+            Players = new Player[Users.Count];
             
             for (int i = 0; i < Users.Count; i++)
             {
                 string user = Users[i];
                 Role role = roles[i];
-                Players.Add(new Player(user, role));
+                Players[i] = new Player(user, role);
                 Out.main.WritePrivate(user, $"You are: {role}");
             }
+            
+            
+            Players = Players.OrderBy(a => Program.Random.Next()).ToArray();
+
+            Table.Draw();
+            
+            CurrentPlayer.StartTurn();
         }
+
 
         private List<Role> CreateRoles()
         {

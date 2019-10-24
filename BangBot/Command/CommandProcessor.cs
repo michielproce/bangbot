@@ -10,7 +10,8 @@ namespace BangBot.Command
             {
                 new StartGameCommand(),
                 new JoinGameCommand(), 
-                new GoCommand() 
+                new GoCommand(),
+                new RollCommand() 
             };
         }
 
@@ -18,12 +19,34 @@ namespace BangBot.Command
         {
             userCommand = userCommand.Trim().ToLower();
             
+            int firstSpace = userCommand.IndexOf(" ");
+
+
+            string trigger;
+            string parameters = null;
+            
+            if (firstSpace < 0)
+            {
+                trigger = userCommand;
+            }
+            else
+            {
+                trigger = userCommand.Substring(0, firstSpace);
+                parameters = userCommand.Substring(firstSpace + 1);
+            }
+            
+//            if (firstSpace < 0)
+//            {
+//                firstSpace = userCommand.Length;
+//            }
+////            string parameters = userCommand.Substring(firstSpace + 1);
+//
+
             foreach (ICommand command in _commands)
             {
-                if (userCommand == command.Trigger)
+                if (trigger == command.Trigger)
                 {
-                    command.Execute(user, userCommand);
-
+                    command.Execute(user, parameters);
                     return;
                 }
             }

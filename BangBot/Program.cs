@@ -6,9 +6,7 @@ namespace BangBot
 {
     class Program
     {
-        
-        public static readonly Random Random = new Random();
-        
+        public static Random Random = new Random();
         
         static void Main(string[] args)
         {
@@ -35,15 +33,20 @@ namespace BangBot
                 
                 if (args[1] == "simulate-start")
                 {
+                    Random = new Random(12);
+                    
                     Simulate(processor, "piet", "start");                        
                     Simulate(processor, "kees", "join");                        
                     Simulate(processor, "henk", "join");                        
-                    Simulate(processor, "sanne", "join");                        
+                    Simulate(processor, "anna", "join");                        
                     Simulate(processor, "emma", "join");                        
                     Simulate(processor, "lisa", "join");                        
                     Simulate(processor, "nick", "join");                        
                     Simulate(processor, "iris", "join");                        
                     Simulate(processor, "piet", "go");                        
+                    Simulate(processor, "anna", "roll");                        
+                    Simulate(processor, "anna", "roll 35");                        
+                    Simulate(processor, "anna", "roll 6");                        
                 }
                 
                 
