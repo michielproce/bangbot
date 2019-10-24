@@ -7,7 +7,7 @@ namespace BangBot.Game
     {
         public static void Draw()
         {
-            Player[] players = BangGame.current.Players;
+            Player[] players = BangGame.Current.Players;
             
             List<string> lines = new List<string>(players.Length);
             
@@ -19,7 +19,7 @@ namespace BangBot.Game
                 string line = $"{i}. {player.User} (Role: {role}, Health: {player.Health}, Arrows: {player.Arrows})";
 
 
-                if (i == BangGame.current.CurrentPlayerIndex)
+                if (i == BangGame.Current.CurrentPlayerIndex)
                 {
                     line += " <-- (current)";
                 }

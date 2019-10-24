@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using BangBot.Command;
 using BangBot.Output;
 
@@ -14,7 +15,7 @@ namespace BangBot
             
             // TODO write help if called without parameters
             
-            if (args[0] == "console")
+            if (args.ElementAtOrDefault(0) == "console")
             {
                 Out.main = new ConsoleOutput();
 
@@ -31,7 +32,7 @@ namespace BangBot
                 
                 CommandProcessor processor = commandProcessor;
                 
-                if (args[1] == "simulate-start")
+                if (args.ElementAtOrDefault(1) == "simulate")
                 {
                     Random = new Random(12);
                     

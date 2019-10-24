@@ -1,3 +1,6 @@
+using System.Linq;
+using BangBot.Game;
+
 namespace BangBot.Command
 {
     public class CommandProcessor
@@ -35,13 +38,29 @@ namespace BangBot.Command
                 parameters = userCommand.Substring(firstSpace + 1);
             }
 
-            foreach (ICommand command in _commands)
+            ICommand command = _commands.SingleOrDefault(o => o.Trigger == trigger);
+
+            if (command != null)
             {
-                if (trigger == command.Trigger)
+                if (command.RequiredGameState.HasValue)
                 {
-                    command.Execute(user, parameters);
-                    return;
+                    if (BangGame.Current.State != command.RequiredGameState)
+                    {
+                        return;
+                    }
                 }
+
+                if (command.OnlyForCurrentUser)
+                {
+                    Player player = BangGame.Current?.CurrentPlayer;
+                    if (user != player?.User)
+                    {
+                        return;
+                    }
+                        
+                }
+
+                command.Execute(user, parameters);
             }
         }
     }

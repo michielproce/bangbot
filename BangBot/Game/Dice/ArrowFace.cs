@@ -7,7 +7,7 @@ namespace BangBot.Game.Dice
         
         public void ImmediateAction()
         {
-            BangGame.current.CurrentPlayer.RemoveArrow();
+            BangGame.Current.CurrentPlayer.RemoveArrow();
         }
     }
 }

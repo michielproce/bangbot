@@ -10,7 +10,7 @@ namespace BangBot.Game
         public const int MinPlayers = 4;
         public const int MaxPlayers = 7;
 
-        public static BangGame current;
+        public static BangGame Current;
         private int _round;
 
         public string StartUser { get; }

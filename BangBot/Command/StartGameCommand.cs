@@ -10,14 +10,15 @@ namespace BangBot.Command
 
         private Timer _timer;
 
-
         public string Trigger => "start";
-        
+        public bool OnlyForCurrentUser => false;
+        public GameState? RequiredGameState => null;
+
         public void Execute(string user, string parameters)
         {
-            if (BangGame.current == null)
+            if (BangGame.Current == null)
             {
-                BangGame.current = new BangGame(user);
+                BangGame.Current = new BangGame(user);
                 Out.main.Write(
                     $"{user} is starting a new game",
                     "To join type 'join'"
@@ -40,10 +41,10 @@ namespace BangBot.Command
         {
             _timer.Enabled = false;
             
-            if (BangGame.current.State == GameState.Lobby)
+            if (BangGame.Current.State == GameState.Lobby)
             {
                 Out.main.Write("Timed out. Destroying game");
-                BangGame.current = null;    
+                BangGame.Current = null;    
             }
         }
     }
