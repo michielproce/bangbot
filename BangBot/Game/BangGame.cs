@@ -8,7 +8,7 @@ namespace BangBot.Game
     public class BangGame
     {
         public const int MinPlayers = 4;
-        public const int MaxPlayers = 7;
+        public const int MaxPlayers = 8;
 
         public static BangGame Current;
         private int _round;
@@ -85,7 +85,7 @@ namespace BangBot.Game
                     roles.AddRange(new[] {Role.Sheriff, Role.Renegade, Role.Outlaw, Role.Outlaw, Role.Outlaw, Role.Deputy, Role.Deputy});
                     break;
                 case 8:
-                    roles.AddRange(new[] {Role.Sheriff, Role.Renegade, Role.Outlaw, Role.Outlaw, Role.Deputy});
+                    roles.AddRange(new[] {Role.Sheriff, Role.Renegade, Role.Renegade, Role.Outlaw, Role.Outlaw, Role.Outlaw, Role.Deputy, Role.Deputy});
                     break;
             }
             
