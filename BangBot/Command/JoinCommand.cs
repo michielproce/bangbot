@@ -23,8 +23,15 @@ namespace BangBot.Command
 
             Out.main.Write(
                 $"Current participants: {(string.Join(", ", BangGame.Current.Users))}",
-                $"{BangGame.Current.StartUser} can start the game by typing 'go'"
+                $"Join the game by typing 'join'",
+                $"Leave the game by typing 'leave'",
+                $"{BangGame.Current.StartUser} can abort creation by typing 'abort'"
             );
+
+            if (BangGame.Current.Users.Count >= BangGame.MinPlayers)
+            {
+                Out.main.Write($"Enough players. {BangGame.Current.StartUser} can start the game by typing 'go'");                
+            }
         }
     }
 }

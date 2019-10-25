@@ -29,12 +29,17 @@ namespace BangBot.Game
             StartUser = startUser;
             
             Users = new List<string>();
-            Users.Add(startUser);
+//            Users.Add(startUser);
         }
         
         public void Join(string user)
         {
             Users.Add(user);
+        }
+
+        public void Leave(string user)
+        {
+            Users.Remove(user);
         }
 
         public void Go()

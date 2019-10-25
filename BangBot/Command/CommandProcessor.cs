@@ -15,7 +15,9 @@ namespace BangBot.Command
                 new JoinGameCommand(), 
                 new GoCommand(),
                 new RollCommand(),
-                new ShowCommand()
+                new ShowCommand(),
+                new AbortCommand(),
+                new LeaveCommand(), 
             };
         }
 

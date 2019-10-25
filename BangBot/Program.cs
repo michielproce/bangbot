@@ -43,11 +43,12 @@ namespace BangBot
                     Simulate(processor, "emma", "join");                        
                     Simulate(processor, "lisa", "join");                        
                     Simulate(processor, "nick", "join");                        
+                    Simulate(processor, "lisa", "leave");                        
                     Simulate(processor, "iris", "join");                        
-                    Simulate(processor, "piet", "go");                        
-                    Simulate(processor, "anna", "roll");                        
-                    Simulate(processor, "anna", "roll 35");                        
-                    Simulate(processor, "anna", "roll 6");                        
+//                    Simulate(processor, "piet", "go");                        
+//                    Simulate(processor, "anna", "roll");                        
+//                    Simulate(processor, "anna", "roll 35");                        
+//                    Simulate(processor, "anna", "roll 6");                        
                 }
                 
                 
