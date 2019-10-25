@@ -8,16 +8,17 @@ namespace BangBot.Command
 {
     public class RollCommand : ICommand
     {
+        private static readonly Face[] _availableFaces = (Face[]) Enum.GetValues(typeof(Face));
+        
         public string Trigger => "roll";
         public bool OnlyForCurrentUser => true;
         public GameState? RequiredGameState => GameState.Active;
-
+        
         public void Execute(string user, string parameters)
         {
             Player player = BangGame.Current.CurrentPlayer;
-        
             Face[] currentFaces = player.Turn.CurrentFaces;
-
+            
             if (player.Turn.NrOfRolls >= 3) 
             {
                 Out.main.Write("Max number of rolls reached");
@@ -54,7 +55,16 @@ namespace BangBot.Command
                 }
             }
 
-            Roll(requestedDice, currentFaces);
+            // Roll!
+            Face[] newFaces = new Face[requestedDice.Length];
+            for (int i = 0; i < requestedDice.Length; i++)
+            {
+                Face rolledFace = _availableFaces[Program.Random.Next(0, _availableFaces.Length)];
+                newFaces[i] = rolledFace;
+                
+                int requestedDie = requestedDice[i];
+                currentFaces[requestedDie] = rolledFace;
+            }
             
             string facesTexts = string.Join("", currentFaces.Select(o => o.GetText()));
             Out.main.Write($"Roll #{player.Turn.NrOfRolls + 1}: {facesTexts}");
@@ -67,20 +77,14 @@ namespace BangBot.Command
                 player.RemoveHealth();
                 player.EndTurn();
             }
-            
-            Out.main.Write("If you are satisfied with you roll, type 'done'");
-        }
 
-        private void Roll(int[] requestedRolls, Face[] currentFaces)
-        {
-            Face[] faces = (Face[]) Enum.GetValues(typeof(Face));
-            
-            foreach (int requestedRoll in requestedRolls)
+            int arrowCount = newFaces.Count(o => o == Face.Arrow);
+            if (arrowCount > 0)
             {
-                currentFaces[requestedRoll] = faces[Program.Random.Next(0, faces.Length)];
-                currentFaces[requestedRoll] = Face.Dynamite;
+                player.AddArrows(arrowCount);
             }
-            
+
+            Out.main.Write("If you are satisfied with you roll, type 'done'");
         }
     }
 }

@@ -48,10 +48,10 @@ namespace BangBot.Game
             Health--;
         }
 
-        public void AddArrow()
+        public void AddArrows(int arrowCount)
         {
-            Out.main.Write($"Arrow for {User}");
-            Arrows++;
+            Out.main.Write($"{arrowCount}x arrow for {User}");
+            Arrows += arrowCount;
         }
     }
 }
