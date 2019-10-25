@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using BangBot.Command;
+using BangBot.Game;
 using BangBot.Output;
 
 namespace BangBot
@@ -37,17 +38,21 @@ namespace BangBot
                     Random = new Random(12);
                     
                     Simulate(processor, "piet", "start");                        
-                    Simulate(processor, "kees", "join");                        
+                    Simulate(processor, "kees", "join");
+                    
                     Simulate(processor, "henk", "join");                        
                     Simulate(processor, "anna", "join");                        
                     Simulate(processor, "emma", "join");                        
                     Simulate(processor, "lisa", "join");                        
                     Simulate(processor, "nick", "join");                        
-                    Simulate(processor, "iris", "join");                        
-                    Simulate(processor, "piet", "go");                        
-                    Simulate(processor, "henk", "roll");                        
-                    Simulate(processor, "henk", "roll 35");                        
-                    Simulate(processor, "henk", "roll 4");                        
+                    Simulate(processor, "iris", "join");
+                    Simulate(processor, "piet", "go");
+
+                    string current = BangGame.Current.CurrentPlayer.User; 
+                    Simulate(processor, current, "roll");                        
+                    Simulate(processor, current, "roll 35");                        
+                    Simulate(processor, current, "roll 4");                        
+                    Simulate(processor, current, "roll 4");                        
                 }
                 
                 

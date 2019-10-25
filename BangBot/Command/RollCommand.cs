@@ -19,6 +19,12 @@ namespace BangBot.Command
         
             IFace[] currentFaces = player.Turn.CurrentFaces;
 
+            if (player.Turn.NrOfRolls >= 3) 
+            {
+                Out.main.Write("Max number of rolls reached");
+                return;
+            }
+
             if (player.Turn.NrOfRolls == 0)
             {
                 Roll(new[] {0, 1, 2, 3, 4}, currentFaces);
