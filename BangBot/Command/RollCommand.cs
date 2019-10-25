@@ -48,6 +48,8 @@ namespace BangBot.Command
             string facesTexts = string.Join("", currentFaces.Select(o => o.Text));
             Out.main.Write($"Roll #{player.Turn.NrOfRolls + 1}: {facesTexts}");
             player.Turn.NrOfRolls++;
+            
+            Out.main.Write("If you are satisfied with you roll, type 'done'");
         }
 
         private void Roll(int[] dice, IFace[] currentFaces)
@@ -55,7 +57,7 @@ namespace BangBot.Command
             foreach (int die in dice)
             {
                 currentFaces[die] = Die.Faces[Program.Random.Next(0, Die.Faces.Length)];
-                currentFaces[die].ImmediateAction();
+                currentFaces[die].ImmediateAction(currentFaces);
             }
         }
     }

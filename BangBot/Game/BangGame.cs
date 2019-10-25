@@ -64,7 +64,12 @@ namespace BangBot.Game
             
             CurrentPlayer.StartTurn();
         }
-
+        
+        public void NextPlayer()
+        {
+            CurrentPlayerIndex = (CurrentPlayerIndex + 1) % Players.Length;
+            CurrentPlayer.StartTurn();
+        }
 
         private List<Role> CreateRoles()
         {
@@ -96,5 +101,7 @@ namespace BangBot.Game
 
             return roles.OrderBy(a => Program.Random.Next()).ToList();
         }
+
+
     }
 }

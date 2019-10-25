@@ -5,7 +5,7 @@ namespace BangBot.Game.Dice
         public string Text => ":bang2:";
         public bool CanReroll => true;
         
-        public void ImmediateAction()
+        public void ImmediateAction(IFace[] currentFaces)
         {
         }
     }

@@ -6,6 +6,6 @@ namespace BangBot.Game.Dice
 
         bool CanReroll { get; }
 
-        void ImmediateAction();
+        void ImmediateAction(IFace[] currentFaces);
     }
 }

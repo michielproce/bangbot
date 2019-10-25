@@ -35,7 +35,20 @@ namespace BangBot.Game
             
         }
 
-        public void RemoveArrow()
+        public void EndTurn()
+        {
+            Out.main.Write($"Ending {User}'s turn");            
+            
+            Turn = null;
+        }
+
+        public void RemoveHealth()
+        {
+            Out.main.Write($"{User} lost health");
+            Health--;
+        }
+
+        public void AddArrow()
         {
             Out.main.Write($"Arrow for {User}");
             Arrows++;
