@@ -50,9 +50,8 @@ namespace BangBot
 
                     string current = BangGame.Current.CurrentPlayer.User; 
                     Simulate(processor, current, "roll");                        
-                    Simulate(processor, current, "roll 35");                        
-                    Simulate(processor, current, "roll 4");                        
-                    
+                    Simulate(processor, current, "roll 3");                        
+                    Simulate(processor, current, "roll 14");
                     Simulate(processor, current, "done");                        
                 }
                 

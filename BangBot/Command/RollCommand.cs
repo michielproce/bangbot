@@ -75,7 +75,7 @@ namespace BangBot.Command
             {
                 Out.main.Write($"{dynamiteCount}x {Face.Dynamite.GetText()}. BOOM!");
                 player.RemoveHealth();
-                player.EndTurn();
+                player.TryEndTurn();
             }
 
             int arrowCount = newFaces.Count(o => o == Face.Arrow);

@@ -10,7 +10,7 @@ namespace BangBot.Command
         
         public void Execute(string user, string parameters)
         {
-            BangGame.Current.CurrentPlayer.EndTurn();
+            BangGame.Current.CurrentPlayer.TryEndTurn();
         }
     }
 }

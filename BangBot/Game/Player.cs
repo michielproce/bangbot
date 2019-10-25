@@ -30,16 +30,18 @@ namespace BangBot.Game
 
         public void StartTurn()
         {
-            Turn = new Turn(); 
+            Turn = new Turn(User);
             Out.main.Write($"{User}'s turn. Available commands: 'roll'");
-            
         }
 
-        public void EndTurn()
+        public void TryEndTurn()
         {
-            Out.main.Write($"Ending {User}'s turn");
-            Turn = null;
-            BangGame.Current.NextPlayer();
+            if (Turn.TryEnd())
+            {
+                Out.main.Write($"Ending {User}'s turn");
+                Turn = null;
+                BangGame.Current.NextPlayer();                
+            }
         }
 
         public void RemoveHealth()
