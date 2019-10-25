@@ -8,7 +8,7 @@ namespace BangBot.Output
         {
             foreach (string message in messages)
             {
-                Console.WriteLine(message);    
+                Console.WriteLine($"> {message}");    
             }
         }
 
@@ -16,7 +16,7 @@ namespace BangBot.Output
         {
             foreach (string message in messages)
             {
-                Console.WriteLine($"PRIVATE TO {user}: {message}");    
+                Console.WriteLine($"> PRIVATE TO {user}: {message}");    
             }
         }
     }

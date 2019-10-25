@@ -37,9 +37,9 @@ namespace BangBot.Game
 
         public void EndTurn()
         {
-            Out.main.Write($"Ending {User}'s turn");            
-            
+            Out.main.Write($"Ending {User}'s turn");
             Turn = null;
+            BangGame.Current.NextPlayer();
         }
 
         public void RemoveHealth()

@@ -77,7 +77,7 @@ namespace BangBot
 
         private static void Simulate(CommandProcessor processor, string user, string userCommand)
         {
-            Out.main.Write($"{user} {userCommand}");
+            Console.WriteLine($"{user} {userCommand}");
             processor.Process(user, userCommand);
         }
     }
