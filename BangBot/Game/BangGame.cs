@@ -29,7 +29,6 @@ namespace BangBot.Game
             StartUser = startUser;
             
             Users = new List<string>();
-//            Users.Add(startUser);
         }
         
         public void Join(string user)
@@ -59,6 +58,12 @@ namespace BangBot.Game
             
             
             Players = Players.OrderBy(a => Program.Random.Next()).ToArray();
+
+            for (int i = 0; i < Players.Length; i++)
+            {
+                Player player = Players[i];
+                player.Index = i;
+            }
 
             Table.Draw();
             

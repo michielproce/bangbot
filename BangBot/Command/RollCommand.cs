@@ -14,6 +14,7 @@ namespace BangBot.Command
         public bool OnlyForCurrentUser => true;
         public GameState? RequiredGameState => GameState.Active;
         
+        
         public void Execute(string user, string parameters)
         {
             Player player = BangGame.Current.CurrentPlayer;

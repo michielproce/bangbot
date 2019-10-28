@@ -5,14 +5,15 @@ namespace BangBot.Game
     public class Player
     {
         public string User { get; }
-        
         public Role Role { get; }
-        public bool RoleRevealed { get; private set; }
+        public bool RoleRevealed { get; }
 
         public int Health { get; private set; }
         public int Arrows { get; private set; }
         
         public Turn Turn { get; private set; }
+        
+        public int Index { get; set; }
 
         public Player(string user, Role role)
         {
@@ -54,6 +55,12 @@ namespace BangBot.Game
         {
             Out.main.Write($"{arrowCount}x arrow for {User}");
             Arrows += arrowCount;
+        }
+
+        public void AddHealth()
+        {
+            Out.main.Write($"{User} gains health");
+            Health++;
         }
     }
 }

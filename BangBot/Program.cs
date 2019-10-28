@@ -53,6 +53,9 @@ namespace BangBot
                     Simulate(processor, current, "roll 3");                        
                     Simulate(processor, current, "roll 14");
                     Simulate(processor, current, "done");                        
+                    Simulate(processor, current, "target 1");                        
+                    Simulate(processor, current, "target 1");                        
+                    Simulate(processor, current, "target 0");                        
                 }
                 
                 

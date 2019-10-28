@@ -19,6 +19,7 @@ namespace BangBot.Command
                 new AbortCommand(),
                 new LeaveCommand(), 
                 new DoneCommand(),  
+                new TargetCommand(),  
             };
         }
 
